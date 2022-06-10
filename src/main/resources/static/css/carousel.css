@@ -1,0 +1,91 @@
+body{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+
+
+}
+#slider{
+    height: 500px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:black;
+}
+.container{
+    width: 1600px;
+    margin: auto;
+}
+.controller{
+    display: flex;
+    justify-content: space-between;
+}
+#controls i{
+    color: white;
+    font-size: 1rem;
+}
+.subcontainer{
+    width: 85%;
+    margin: auto;
+}
+.previous, .next{
+   padding: 2px;
+   width: 30px;
+   cursor: pointer;
+   border-radius: 50%;
+   outline: none;
+   transition: 0.7s ease-in-out;
+   border: 3px solid white;
+   background-color: black;
+   box-shadow: 0 0 5px #bbb;
+}
+.previous:hover, .next:hover{
+    border: 3px solid grey;
+}
+.slide-img{
+    width: 100%;
+    height: 350px;
+
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+
+}
+.slide-img:hover{
+    box-shadow: 0 0 0 200px rgba(0,0,0,0.3) inset
+}
+.img-1{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/5184VZjYQ5L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg");
+}
+.img-2{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51tjnvwfLvL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg");
+}
+.img-3{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51DkRtaxdYL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg");
+
+}
+.img-4{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/81i5wG7p3sL.jpg");
+}
+.img-5{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51BTlRykvfL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg");
+}
+.img-6{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51NpGEKBQoL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg");
+}
+.img-7{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51m7vxFoOKL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg");
+}
+.img-8{
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51SVdNZSRWL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg");
+}
+
+@media(max-width:1600px){
+    .container{
+        width: 100%;
+    }
+}
