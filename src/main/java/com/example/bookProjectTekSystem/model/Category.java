@@ -1,5 +1,7 @@
 package com.example.bookProjectTekSystem.model;
 
+// category entity
+
 
 import lombok.Data;
 

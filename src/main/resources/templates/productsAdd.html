@@ -39,14 +39,14 @@
     </div>
 </nav>
 <div class="container">
-    <h3>Add a new Product</h3>
+    <h3>Add a new Book</h3>
     <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-5">
 
                 <input type="hidden" name="id" th:field="*{id}">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Book Name</label>
                     <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"
                            placeholder="Enter name">
 
@@ -71,12 +71,12 @@
                 <!--                           placeholder="Weight">-->
                 <!--                </div>-->
                 <div class="form-group">
-                    <label for="description">Product Description</label>
+                    <label for="description">Book Description</label>
                     <textarea class="form-control" rows="5" th:field="*{description}" name="description" id="description"></textarea>
                 </div>
             </div>
             <div class="col-sm-5">
-                <p>Product Image</p>
+                <p>Book Image</p>
                 <div class="custom-file">
                     <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
                     <label class="custom-file-label" for="productImage">Choose file</label>

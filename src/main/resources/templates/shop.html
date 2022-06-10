@@ -56,7 +56,7 @@
         <div class="col-sm-3">
             <h4>Categories</h4>
             <ul class="list-group">
-                <a th:href="@{/shop}"><li class="list-group-item" style="color:black;">All Products</li></a>
+                <a th:href="@{/shop}"><li class="list-group-item" style="color:black;">All Books</li></a>
                 <a href="" th:each="category, iStat : ${categories}"
                    th:href="@{/shop/category/{id}(id=${category.id})}"><li
                         class="list-group-item "style="color:black;" th:text="${category.name}"></li></a>
@@ -74,7 +74,7 @@
                             <h5 class="card-title" th:text="${product.name}"></h5>
                             <h4>$ <span th:text="${product.price}"></span></h4>
                             <p th:text="${product.description}" ></p>
-                            <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn" style = "background-color: #fd8a09">View Product</a>
+                            <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn" style = "background-color: #fd8a09">View Book</a>
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ public class adminController {
         return "categories";
     }
 
-//    when user click on add category button then get the admin/catrgories/add route.  return to the categoriesAdd.html page.
+//    when user click on add category button then get the admin/categories/add route.  return to the categoriesAdd.html page.
     @GetMapping("/admin/categories/add")
     public String getCategoryAdd(Model model){
         model.addAttribute("category",new Category());

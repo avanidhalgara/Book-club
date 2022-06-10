@@ -8,5 +8,6 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    //    declare a custom method to find all products by category id
     List<Product> findAllByCategory_Id(int id);
 }

@@ -1,3 +1,5 @@
+
+// Jpa repository are defined for method of storing , updating,and extracting data stored from java application to backend
 package com.example.bookProjectTekSystem.repository;
 
 import com.example.bookProjectTekSystem.model.Category;
