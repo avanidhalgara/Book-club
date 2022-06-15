@@ -51,6 +51,8 @@ public class User {
 
     }
 
+
+
 //    public boolean hasRole(String roleName) {
 //        Iterator<Role> iterator = this.roles.iterator();
 //        while (iterator.hasNext()) {

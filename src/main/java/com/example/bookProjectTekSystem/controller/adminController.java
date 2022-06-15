@@ -18,6 +18,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
+
+//  control all the admin related routes
 @Controller
 public class adminController {
 
@@ -45,7 +47,8 @@ public class adminController {
         return "categories";
     }
 
-//    when user click on add category button then get the admin/categories/add route.  return to the categoriesAdd.html page.
+//    when user click on add category button then get the admin/categories/add route. passed the empty object new Category()
+//    return to the categoriesAdd.html page.
     @GetMapping("/admin/categories/add")
     public String getCategoryAdd(Model model){
         model.addAttribute("category",new Category());
