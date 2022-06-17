@@ -10,8 +10,8 @@ the Books by category and add it in the cart. For example if user wants a book f
 educational and add it in the cart. Also as an admin i can have only access to add,update, read and delete access. User can view book, its description, price and image. As an Uswr i can add book in the cart and remove it too.
 
 ## Technologies Used
-.MySql
-.Spring Boot
+* MySql
+* Spring Boot
 
 
 _________________________________________________________________________________________________________________________________________________________________________
