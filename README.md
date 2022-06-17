@@ -12,6 +12,9 @@ educational and add it in the cart. Also as an admin i can have only access to a
 ## Technologies Used
 * MySql
 * Spring Boot
+* HTML
+* CSS
+* Javascript
 
 
 _________________________________________________________________________________________________________________________________________________________________________
