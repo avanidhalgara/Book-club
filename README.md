@@ -1,4 +1,4 @@
-# Book-club Project
+# Book-club 
 
 This app is for Admin and Users, where Admin can create, update, read and delete books by category and make it available for Users. Users can view books , its description, image , price and description. User can add books in the cart also remove item from the cart. This app is developed using spring boot framework. For backend i have added dependencies Spring data jpa, Spring web, Spring security, Spring dev tools,validation and Lombok. For front end i have adeed Thymeleaf dependency.
 ________________________________________________________________________________________________________________________________________________________________________
