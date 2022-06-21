@@ -1,13 +1,26 @@
 package com.example.bookProjectTekSystem.controller;
 
 import com.example.bookProjectTekSystem.global.GlobalData;
+import com.example.bookProjectTekSystem.model.Cart;
+import com.example.bookProjectTekSystem.model.Product;
+import com.example.bookProjectTekSystem.model.User;
+import com.example.bookProjectTekSystem.service.CartService;
 import com.example.bookProjectTekSystem.service.CategoryService;
+import com.example.bookProjectTekSystem.service.CustomUserDetailService;
 import com.example.bookProjectTekSystem.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -16,6 +29,10 @@ public class HomeController {
     CategoryService categoryService;
     @Autowired
     ProductService productService;
+    @Autowired
+    CartService cartService;
+    @Autowired
+    private CustomUserDetailService userService;
 
 //    @GetMapping({"/","/home"})
 //    public String home(Model model){
@@ -23,9 +40,43 @@ public class HomeController {
 //    }
     @GetMapping({"/","/home"})
     public String home(Model model){
-    model.addAttribute("cartCount", GlobalData.cart.size());
-    return "index";
+        getUserFromContext();
+        populateUnpaidCart(model);
+        return "index";
 }
+
+    private void populateUnpaidCart(Model model) {
+        Cart cart = cartService.getCartByUserId(GlobalData.userId);
+        if(cart != null) {
+            GlobalData.checkoutCart = cart;
+            GlobalData.cartId = cart.getId();
+            String productIds = cart.getProductIds();
+            List<String> productList = Arrays.asList(productIds.split(","));
+            if(!CollectionUtils.isEmpty(productList)){
+                GlobalData.cart.clear();
+                for( String productString : productList){
+                    Optional<Product> product = productService.getProductById(Long.parseLong(productString));
+                    GlobalData.cart.add(product.get());
+                    model.addAttribute("cartCount", GlobalData.cart.size());
+                }
+            }
+        }
+    }
+
+    private void getUserFromContext() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String login = authentication.getName();
+        int userId = 0;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            if(username != null) {
+                User user = userService.loadUser(username).get();
+                userId = user.getId();
+                GlobalData.userId = userId;
+            }
+        }
+    }
 
     @GetMapping("/shop")
     public String shop(Model model){

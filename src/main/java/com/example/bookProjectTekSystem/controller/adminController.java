@@ -111,10 +111,12 @@ public class adminController {
                                  @RequestParam("imgName")String imgName) throws IOException {
 
         Product product = new Product();
+        Double price=Double.parseDouble(String.valueOf(productDTO.getPrice()));
         product.setId(productDTO.getId());
+        System.out.println(productDTO.getName());
         product.setName(productDTO.getName());
         product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
-        product.setPrice(productDTO.getPrice());
+        product.setPrice(price);
         product.setDescription(productDTO.getDescription());
         String imageUUID;
         if(!file.isEmpty()){

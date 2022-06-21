@@ -51,6 +51,8 @@
     </thead>
     <tbody>
 
+
+<!--    iStat is responsible for serial number . set the serial number 1 so when it loop through it starts by 1-->
     <tr th:each="category, iStat : ${categories}">
       <th scope="row" th:text="${iStat.index + 1}">1</th>
       <td th:text="${category.name}">Larry</td>
