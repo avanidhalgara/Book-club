@@ -8,7 +8,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "book")
+@Table(name = "category")
 @Data
 public class Category {
 
@@ -23,7 +23,7 @@ public class Category {
 
     }
 
-    public Category( String name) {
+    public Category(String name) {
         this.name = name;
     }
 

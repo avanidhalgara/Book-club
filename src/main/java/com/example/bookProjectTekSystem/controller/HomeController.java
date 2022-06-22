@@ -34,69 +34,73 @@ public class HomeController {
     @Autowired
     private CustomUserDetailService userService;
 
-//    @GetMapping({"/","/home"})
+    //    @GetMapping({"/","/home"})
 //    public String home(Model model){
 //        return "index";
 //    }
-    @GetMapping({"/","/home"})
-    public String home(Model model){
+    @GetMapping({"/", "/home"})
+    public String home(Model model) {
         getUserFromContext();
         populateUnpaidCart(model);
         return "index";
-}
+    }
 
     private void populateUnpaidCart(Model model) {
-        Cart cart = cartService.getCartByUserId(GlobalData.userId);
-        if(cart != null) {
-            GlobalData.checkoutCart = cart;
-            GlobalData.cartId = cart.getId();
-            String productIds = cart.getProductIds();
-            List<String> productList = Arrays.asList(productIds.split(","));
-            if(!CollectionUtils.isEmpty(productList)){
-                GlobalData.cart.clear();
-                for( String productString : productList){
-                    Optional<Product> product = productService.getProductById(Long.parseLong(productString));
-                    GlobalData.cart.add(product.get());
-                    model.addAttribute("cartCount", GlobalData.cart.size());
+        if (GlobalData.userId != 0) {
+            Cart cart = cartService.getCartByUserId(GlobalData.userId);
+            GlobalData.cart.clear();
+            if (cart != null) {
+                GlobalData.checkoutCart = cart;
+                GlobalData.cartId = cart.getId();
+                String productIds = cart.getProductIds();
+                List<String> productList = Arrays.asList(productIds.split(","));
+                if (!CollectionUtils.isEmpty(productList)) {
+                    for (String productString : productList) {
+                        Optional<Product> product = productService.getProductById(Long.parseLong(productString));
+                        if (product != null) {
+                            GlobalData.cart.add(product.get());
+                            model.addAttribute("cartCount", GlobalData.cart.size());
+                        }
+                    }
                 }
             }
         }
     }
 
     private void getUserFromContext() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String login = authentication.getName();
-        int userId = 0;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             String username = ((UserDetails) principal).getUsername();
-            if(username != null) {
+            if (username != null) {
                 User user = userService.loadUser(username).get();
-                userId = user.getId();
-                GlobalData.userId = userId;
+                if (user != null) {
+                    int userId = user.getId();
+                    GlobalData.userId = userId;
+                }
             }
         }
     }
 
     @GetMapping("/shop")
-    public String shop(Model model){
-        model.addAttribute("categories",categoryService.getAllCategory());
-        model.addAttribute("products",productService.getAllProduct());
-        model.addAttribute("cartCount",GlobalData.cart.size());
-        return  "shop";
+    public String shop(Model model) {
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "shop";
     }
+
     @GetMapping("/shop/category/{id}")
-    public String shopByCategory(Model model, @PathVariable int id){
-        model.addAttribute("categories",categoryService.getAllCategory());
-        model.addAttribute("products",productService.getAllProductsByCategoryId(id));
-        model.addAttribute("cartCount",GlobalData.cart.size());
-        return  "shop";
+    public String shopByCategory(Model model, @PathVariable int id) {
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("products", productService.getAllProductsByCategoryId(id));
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "shop";
     }
 
     @GetMapping("/shop/viewproduct/{id}")
-    public String viewProduct(Model model, @PathVariable int id){
-        model.addAttribute("product",productService.getProductById(id).get());
-        model.addAttribute("cartCount",GlobalData.cart.size());
-        return  "viewProduct";
+    public String viewProduct(Model model, @PathVariable int id) {
+        model.addAttribute("product", productService.getProductById(id).get());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "viewProduct";
     }
 }
