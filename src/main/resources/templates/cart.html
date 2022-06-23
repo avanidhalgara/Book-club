@@ -15,12 +15,14 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light"style="background-color: #fd8a09" >
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fd8a09">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
+                 class="d-inline-block align-top" alt=""/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -73,7 +75,8 @@
                                     <div class="mb-3 mb-md-0">
                                         <img class="img-fluid w-100"
                                              th:src="@{${'/productImages/' + item.imageName}}"
-                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
+                                             alt="Sample">
 
                                     </div>
                                 </div>
@@ -90,11 +93,15 @@
                                         </div>
                                         <div class="mt-5 d-flex justify-content-between align-items-center">
                                             <div>
-                                                <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"  type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                                                <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"
+                                                   type="button"
+                                                   class="card-link-secondary small text-uppercase mr-3"><i
                                                         class="fas fa-trash-alt mr-1"></i> Remove item </a>
 
                                             </div>
-                                            <p class="mb-0"><span><strong>$<span th:text="${item.price}"></span></strong></span></p>
+
+                                            <p class="mb-0"><span><strong>$<span
+                                                    th:text="${item.price}"></span></strong></span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +113,6 @@
 
                         </div>
                     </div>
-
-
 
 
                 </div>
@@ -138,13 +143,14 @@
                                     <span><strong>$<span id="totalAmount" th:text="${total}"></span></strong></span>
                                 </li>
                             </ul>
-                            <a th:href="@{/checkout/{cartId}(cartId=${cartId})}" class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09" th:if="${total
+                            <a th:href="@{/checkout/{cartId}(cartId=${cartId})}"
+                               class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09" th:if="${total
                            != 0}">
                                 Checkout</a>
-<!--                            <a th:href="@{/checkout}"  class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09">-->
-<!--                                Checkout</a>-->
-<!--                            <button id="checkoutButton"  class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09">-->
-<!--                                Checkout</button>-->
+                            <!--                            <a th:href="@{/checkout}"  class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09">-->
+                            <!--                                Checkout</a>-->
+                            <!--                            <button id="checkoutButton"  class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09">-->
+                            <!--                                Checkout</button>-->
 
 
                         </div>
@@ -165,12 +171,15 @@
 <!--Main layout-->
 
 
-
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 <script>
     function success() {
 	 if(document.getElementById("totalAmount").value==="") {
@@ -179,6 +188,8 @@
             document.getElementById('checkoutButton').disabled = false;
         }
     }
+
+
 </script>
 </body>
 </html>

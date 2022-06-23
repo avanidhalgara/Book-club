@@ -57,60 +57,48 @@
     </div>
 </nav>
 <div class="container">
-
     <!--Section: Block Content-->
     <section class="mt-5 mb-4">
-
         <!--Grid row-->
-        <div class="row">
+        <form action="" method="post" th:action="@{/payNow/{cartId}(cartId=${cartId})}">
 
-            <!--Grid column-->
-            <div class="col-lg-8 mb-4">
-
-                <!-- Card -->
-                <div class="card wish-list pb-1" data-bs-toggle="collapse">
-                    <div class="card-body" data-toggle="collapse" data-target="#navbarNav">
-
-                        <h5 class="mb-2" data-bs-toggle="collapse">Billing details</h5>
-                        <form action="" method="get" th:action="@{/checkoutsuccess}">
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-8 mb-4">
+                    <!-- Card -->
+                    <div class="card wish-list pb-1" data-bs-toggle="collapse">
+                        <div class="card-body" data-toggle="collapse" data-target="#navbarNav">
+                            <h5 class="mb-2" data-bs-toggle="collapse">Billing details</h5>
                             <!-- Grid row -->
                             <div class="row">
-
                                 <!-- Grid column -->
                                 <div class="col-lg-6">
-
                                     <!-- First name -->
                                     <div class="md-form md-outline mb-0 mb-lg-4">
                                         <label for="firstName">First name</label>
                                         <input type="text" id="firstName" required class="form-control mb-0 mb-lg-2"/>
                                     </div>
-
                                 </div>
                                 <!-- Grid column -->
 
                                 <!-- Grid column -->
                                 <div class="col-lg-6">
-
                                     <!-- Last name -->
                                     <div class="md-form md-outline">
                                         <label for="lastName">Last name</label>
                                         <input type="text" id="lastName" required class="form-control"/>
                                     </div>
-
                                 </div>
                                 <!-- Grid column -->
-
+                                <!-- Row Closed -->
                             </div>
                             <!-- Grid row -->
-
 
                             <!-- Country -->
                             <div class="d-flex flex-wrap">
                                 <div class="select-outline position-relative w-100">
                                     <label>Country</label>
                                     <input type="text" class="form-control" required="true"/>
-
-
                                 </div>
                             </div>
 
@@ -139,7 +127,6 @@
                             <div class="md-form md-outline mt-2">
                                 <label for="form17">Town / City</label>
                                 <input type="text" required id="form17" class="form-control"/>
-
                             </div>
 
 
@@ -157,7 +144,6 @@
                             </div>
 
                             <br>
-
                             <!--             collapse info-->
                             <p>
                                 <a class="btn" style="background-color: #fd8a09" data-bs-toggle="collapse"
@@ -188,19 +174,17 @@
                                     </div>
                                 </div>
                             </div>
-
-
+                            <!--Grid column-->
+                            <br>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <!--Grid row-->
+                        </div>
                     </div>
-
-                    <!-- Card -->
-
-
                 </div>
-                <!--Grid column-->
-                <br>
-                <!--Grid column-->
-                <div class="col-lg-4">
 
+
+                <div class="col-lg-4">
                     <!-- Card -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -212,47 +196,25 @@
                                     Amount Payable
                                     <span>$<span th:text="${total}"></span></span>
                                 </li>
-                                <!--              <li class="list-group-item d-flex justify-content-between align-items-center px-0">-->
-                                <!--                Shipping-->
-                                <!--                <span>Gratis</span>-->
-                                <!--              </li>-->
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                     <div>
                                         <strong>The total amount of</strong>
-                                        <!--                  <strong>-->
-                                        <!--                    <p class="mb-0">(including VAT)</p>-->
-                                        <!--                  </strong>-->
                                     </div>
                                     <span><strong>$<span th:text="${total}"></span></strong></span>
                                 </li>
                             </ul>
-
-
                             <input type="submit"
-                               class="btn btn-block waves-effect waves-light" style="background-color: #fd8a09" value="Pay Now" ></input>
-
-
+                                   class="btn btn-block waves-effect waves-light"
+                                   style="background-color: #fd8a09" value="Pay Now"></input>
                         </div>
                     </div>
-
-                    <!-- Card -->
-
-                    <!-- Card -->
-
-                    <!-- Card -->
-
                 </div>
-                <!--Grid column-->
+
 
             </div>
-            </form>
-            <!--Grid row-->
-        </div>
 
+        </form>
     </section>
-    <!--Section: Block Content-->
-
-
 </div>
 
 

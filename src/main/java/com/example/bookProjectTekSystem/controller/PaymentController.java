@@ -27,7 +27,7 @@ public class PaymentController {
     private final String PAID = "PAID";
 
     @PostMapping("/payNow/{cartId}")
-    public String Pay(@PathVariable int cartId){
+    public String Pay(@PathVariable int cartId) {
         Cart cart = cartService.getCartById(cartId).get();
         cart.setStatus(PAID);
         cartService.addCart(cart);
@@ -35,15 +35,16 @@ public class PaymentController {
     }
 
     @GetMapping("/checkoutsuccess")
-    public String success(Model model){
-        model.addAttribute("cartCount",GlobalData.cart.size());
+    public String success(Model model) {
+        model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
         List<Product> ids = new ArrayList<>();
-        for(Product product : GlobalData.cart){
+        for (Product product : GlobalData.cart) {
             ids.add(product);
         }
-        model.addAttribute("cart",ids);
+        model.addAttribute("cart", ids);
         GlobalData.cart.clear();
+        GlobalData.cartId = 0;
         return "checkoutsuccess";
     }
 }

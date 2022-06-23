@@ -18,6 +18,8 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +47,7 @@ public class HomeController {
         return "index";
     }
 
+    //   made method to check if there is any unpaid cart
     private void populateUnpaidCart(Model model) {
         if (GlobalData.userId != 0) {
             Cart cart = cartService.getCartByUserId(GlobalData.userId);
@@ -56,17 +59,23 @@ public class HomeController {
                 List<String> productList = Arrays.asList(productIds.split(","));
                 if (!CollectionUtils.isEmpty(productList)) {
                     for (String productString : productList) {
-                        Optional<Product> product = productService.getProductById(Long.parseLong(productString));
-                        if (product != null) {
-                            GlobalData.cart.add(product.get());
-                            model.addAttribute("cartCount", GlobalData.cart.size());
+                        if (!productString.isEmpty()) {
+                            Optional<Product> product = productService.getProductById(Long.parseLong(productString));
+                            if (product.isPresent()) {
+                                Product productObject = product.get();
+                                BigDecimal amount = new BigDecimal(productObject.getPrice()).setScale(2, RoundingMode.HALF_UP);
+                                productObject.setPrice(amount.doubleValue());
+                                GlobalData.cart.add(productObject);
+                            }
                         }
                     }
+                    model.addAttribute("cartCount", GlobalData.cart.size());
                 }
             }
         }
     }
 
+    // to get the user id from context
     private void getUserFromContext() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
