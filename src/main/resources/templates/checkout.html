@@ -14,7 +14,7 @@
             href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
 
-    <title>Document</title>
+    <title>Checkout</title>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #fd8a09">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
+            <img th:src="@{/images/logo.jpg}" src="../static/images/logo.jpg" width="auto" height="40"
                  class="d-inline-block align-top" alt=""/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -34,19 +34,19 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">home</a>
+                    <a class="nav-link" th:href="@{/}" href="#">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
+                    <a class="nav-link" th:href="@{/cart}" href="#">Cart</a>
                 </li>
                 <li class="nav-item active">
                     <span class="nav-link" th:text="${cartCount}">0</span>
@@ -68,14 +68,14 @@
                     <!-- Card -->
                     <div class="card wish-list pb-1" data-bs-toggle="collapse">
                         <div class="card-body" data-toggle="collapse" data-target="#navbarNav">
-                            <h5 class="mb-2" data-bs-toggle="collapse">Billing details</h5>
+                            <h5 class="mb-2" data-bs-toggle="collapse">Billing Details</h5>
                             <!-- Grid row -->
                             <div class="row">
                                 <!-- Grid column -->
                                 <div class="col-lg-6">
                                     <!-- First name -->
                                     <div class="md-form md-outline mb-0 mb-lg-4">
-                                        <label for="firstName">First name</label>
+                                        <label for="firstName">First Name</label>
                                         <input type="text" id="firstName" required class="form-control mb-0 mb-lg-2"/>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                 <div class="col-lg-6">
                                     <!-- Last name -->
                                     <div class="md-form md-outline">
-                                        <label for="lastName">Last name</label>
+                                        <label for="lastName">Last Name</label>
                                         <input type="text" id="lastName" required class="form-control"/>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
 
                             <!-- Email address -->
                             <div class="md-form md-outline mt-2">
-                                <label for="form19">Email address</label>
+                                <label for="form19">Email Address</label>
                                 <input type="email" required id="form19" class="form-control"/>
                             </div>
 
@@ -167,7 +167,7 @@
                                                    class="form-control"/>
                                         </div>
                                         <div class="md-form md-outline mt-2">
-                                            <label for="form18">Expiration date</label>
+                                            <label for="form18">Expiration Date</label>
                                             <input type="date" minlength="10" maxlength="10" required
                                                    id="expirationdate" class="form-control"/>
                                         </div>
