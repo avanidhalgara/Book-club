@@ -23,7 +23,7 @@ import java.util.Optional;
 @Controller
 public class adminController {
 
-    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+    public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
     @Autowired
     CategoryService categoryService;
 
@@ -119,15 +119,19 @@ public class adminController {
         product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
         product.setPrice(price);
         product.setDescription(productDTO.getDescription());
-        String imageUUID;
+        String imageView;
+//        if its false
         if (!file.isEmpty()) {
-            imageUUID = file.getOriginalFilename();
-            Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+//            getOriginalFileName return the original file name and store it in imageUUID
+            imageView = file.getOriginalFilename();
+//            using Paths method take two parameters . one where you want to save(which path) the file and
+//            which file you want to store.
+            Path fileNameAndPath = Paths.get(uploadDirectory, imageView);
             Files.write(fileNameAndPath, file.getBytes());
         } else {
-            imageUUID = imgName;
+            imageView = imgName;
         }
-        product.setImageName(imageUUID);
+        product.setImageName(imageView);
         productService.addProduct(product);
 
 

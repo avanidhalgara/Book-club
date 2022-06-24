@@ -20,12 +20,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class HomeController {
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Autowired
     CategoryService categoryService;
@@ -50,22 +52,24 @@ public class HomeController {
     //   made method to check if there is any unpaid cart
     private void populateUnpaidCart(Model model) {
         if (GlobalData.userId != 0) {
+            //Load unpaid (left from last session) cart from DB
             Cart cart = cartService.getCartByUserId(GlobalData.userId);
             GlobalData.cart.clear();
             if (cart != null) {
+                // If cart is found save it as Checkout Cart
                 GlobalData.checkoutCart = cart;
                 GlobalData.cartId = cart.getId();
+                // Get comma separated productIds from cart (model) object
                 String productIds = cart.getProductIds();
+                // Convert comma separated productIds to list
                 List<String> productList = Arrays.asList(productIds.split(","));
                 if (!CollectionUtils.isEmpty(productList)) {
                     for (String productString : productList) {
                         if (!productString.isEmpty()) {
+                            // For each productId get the product (model) object and save it to Global.cart list
                             Optional<Product> product = productService.getProductById(Long.parseLong(productString));
                             if (product.isPresent()) {
-                                Product productObject = product.get();
-                                BigDecimal amount = new BigDecimal(productObject.getPrice()).setScale(2, RoundingMode.HALF_UP);
-                                productObject.setPrice(amount.doubleValue());
-                                GlobalData.cart.add(productObject);
+                                GlobalData.cart.add(product.get());
                             }
                         }
                     }

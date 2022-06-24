@@ -16,25 +16,28 @@ public class ProductService {
     ProductRepository productRepository;
 
 
-    public List<Product> getAllProduct(){
+    public List<Product> getAllProduct() {
         return productRepository.findAll();
     }
-    public void addProduct(Product product){
+
+    public void addProduct(Product product) {
         productRepository.save(product);
 
     }
-    public void removeByProductId(long id){
+
+    public void removeByProductId(long id) {
         productRepository.deleteById((id));
 
     }
-    public Optional<Product> getProductById(long id){
+
+    public Optional<Product> getProductById(long id) {
         return productRepository.findById(id);
     }
-    public List<Product> getAllProductsByCategoryId(int id){
+
+    //    This method will use when user logged in and see all products by category
+    public List<Product> getAllProductsByCategoryId(int id) {
         return productRepository.findAllByCategory_Id(id);
     }
-
-
 
 
 }

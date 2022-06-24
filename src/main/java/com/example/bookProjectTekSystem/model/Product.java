@@ -3,6 +3,7 @@ package com.example.bookProjectTekSystem.model;
 import lombok.Data;
 
 import javax.persistence.*;
+
 @Entity
 @Table(name = "product")
 @Data
@@ -16,10 +17,10 @@ public class Product {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id",referencedColumnName ="category_id" )
-    private  Category category;
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    private Category category;
 
-    private double price;
+    private Double price;
 
     private String description;
 
@@ -28,7 +29,7 @@ public class Product {
     public Product() {
     }
 
-    public Product( String name, Category category, double price, String description, String imageName) {
+    public Product(String name, Category category, Double price, String description, String imageName) {
 
         this.name = name;
         this.category = category;

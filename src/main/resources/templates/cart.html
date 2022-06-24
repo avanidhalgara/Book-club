@@ -101,7 +101,8 @@
                                             </div>
 
                                             <p class="mb-0"><span><strong>$<span
-                                                    th:text="${item.price}"></span></strong></span></p>
+                                                    th:text="${#numbers.formatDecimal(item.price,0,2)}"></span></strong></span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -188,6 +189,9 @@
             document.getElementById('checkoutButton').disabled = false;
         }
     }
+
+
+
 
 
 </script>

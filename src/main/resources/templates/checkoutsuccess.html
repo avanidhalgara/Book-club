@@ -15,12 +15,14 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light"style="background-color: #fd8a09" >
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fd8a09">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
+                 class="d-inline-block align-top" alt=""/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -72,7 +74,8 @@
                                     <div class="mb-3 mb-md-0">
                                         <img class="img-fluid w-100"
                                              th:src="@{${'/productImages/' + item.imageName}}"
-                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
+                                             alt="Sample">
 
                                     </div>
                                 </div>
@@ -89,7 +92,9 @@
                                         </div>
                                         <div class="mt-5 col-lg-15 d-flex justify-content-between align-items-right">
 
-                                            <p class="mb-0"><span><strong>$<span th:text="${item.price}"></span></strong></span></p>
+                                            <p class="mb-0"><span><strong>$<span
+                                                    th:text="${#numbers.formatDecimal(item.price,0,2)}"></span></strong></span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -97,8 +102,6 @@
 
                         </div>
                     </div>
-
-
 
 
                 </div>
@@ -112,12 +115,11 @@
                         <div class="card-body">
 
                             <h5 class="mb-3">The total amount </h5>
-                            <span>$<span th:text="${total}"></span></span>
+                            <span>$<span th:text="${#numbers.formatDecimal(total,0,2)}"></span></span>
 
                         </div>
                     </div>
                     <!-- Card -->
-
 
 
                 </div>
@@ -133,10 +135,13 @@
 </div>
 
 
-
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
