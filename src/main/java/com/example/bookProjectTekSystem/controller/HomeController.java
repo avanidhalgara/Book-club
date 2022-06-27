@@ -37,13 +37,9 @@ public class HomeController {
     @Autowired
     private CustomUserDetailService userService;
 
-    //    @GetMapping({"/","/home"})
-//    public String home(Model model){
-//        return "index";
-//    }
     @GetMapping({"/", "/home"})
     public String home(Model model) {
-        getUserFromContext();
+        getUserFromContext(model);
         populateUnpaidCart(model);
         return "index";
     }
@@ -79,7 +75,7 @@ public class HomeController {
     }
 
     // to get the user id from context
-    private void getUserFromContext() {
+    private void getUserFromContext(Model model) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             String username = ((UserDetails) principal).getUsername();
@@ -88,6 +84,7 @@ public class HomeController {
                 if (user != null) {
                     int userId = user.getId();
                     GlobalData.userId = userId;
+                    model.addAttribute("Role", user.getRoles().get(0).getName());
                 }
             }
         }
