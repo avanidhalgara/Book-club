@@ -21,11 +21,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     CustomUserDetailService customUserDetailService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/shop/**","/register").permitAll()
+                .antMatchers("/", "/shop/**", "/register").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
@@ -34,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/",true)
+                .defaultSuccessUrl("/", true)
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and()
@@ -50,8 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable();
 
     }
+
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -65,6 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**","/static/**","/images/**","/css/**","/js/**","/productImages/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/images/**", "/css/**", "/js/**", "/bookImages/**");
     }
 }

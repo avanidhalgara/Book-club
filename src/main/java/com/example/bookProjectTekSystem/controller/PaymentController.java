@@ -1,9 +1,9 @@
 package com.example.bookProjectTekSystem.controller;
 
 
-import com.example.bookProjectTekSystem.global.GlobalData;
+import com.example.bookProjectTekSystem.context.GlobalContext;
 import com.example.bookProjectTekSystem.model.Cart;
-import com.example.bookProjectTekSystem.model.Product;
+import com.example.bookProjectTekSystem.model.Book;
 import com.example.bookProjectTekSystem.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static com.example.bookProjectTekSystem.global.GlobalData.cart;
 
 @Controller
 public class PaymentController {
@@ -36,15 +33,15 @@ public class PaymentController {
 
     @GetMapping("/checkoutsuccess")
     public String success(Model model) {
-        model.addAttribute("cartCount", GlobalData.cart.size());
-        model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
-        List<Product> ids = new ArrayList<>();
-        for (Product product : GlobalData.cart) {
+        model.addAttribute("cartCount", GlobalContext.cart.size());
+        model.addAttribute("total", GlobalContext.cart.stream().mapToDouble(Book::getPrice).sum());
+        List<Book> ids = new ArrayList<>();
+        for (Book product : GlobalContext.cart) {
             ids.add(product);
         }
         model.addAttribute("cart", ids);
-        GlobalData.cart.clear();
-        GlobalData.cartId = 0;
+        GlobalContext.cart.clear();
+        GlobalContext.cartId = 0;
         return "checkoutsuccess";
     }
 }

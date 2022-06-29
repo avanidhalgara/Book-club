@@ -1,9 +1,9 @@
 package com.example.bookProjectTekSystem.serviceTest;
 
 import com.example.bookProjectTekSystem.model.Category;
-import com.example.bookProjectTekSystem.model.Product;
+import com.example.bookProjectTekSystem.model.Book;
 import com.example.bookProjectTekSystem.repository.CategoryRepository;
-import com.example.bookProjectTekSystem.repository.ProductRepository;
+import com.example.bookProjectTekSystem.repository.BookRepository;
 import com.example.bookProjectTekSystem.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +32,7 @@ public class CategoryServiceTest {
     private CategoryRepository categoryRepository;
 
     @Mock
-    private ProductRepository productRepository;
+    private BookRepository bookRepository;
 
 
     @Test
@@ -61,12 +61,12 @@ public class CategoryServiceTest {
     @Test
     public void deleteBycategoryTest() {
         Category category = new Category();
-        Optional<Product> product = Optional.ofNullable(new Product("A book", category, 4.25, "nice to read", "book.jpg"));
-        List<Product> products = new ArrayList<>();
+        Optional<Book> product = Optional.ofNullable(new Book("A book", category, 4.25, "nice to read", "book.jpg"));
+        List<Book> products = new ArrayList<>();
         products.add(product.get());
         willDoNothing().given(categoryRepository).deleteById(1);
-        when(productRepository.findAllByCategory_Id(1)).thenReturn(products);
-        willDoNothing().given(productRepository).deleteAllById(Mockito.anyList());
+        when(bookRepository.findAllByCategory_Id(1)).thenReturn(products);
+        willDoNothing().given(bookRepository).deleteAllById(Mockito.anyList());
         categoryService.removeCategoryById(1);
         verify(categoryRepository, times(1)).deleteById(1);
     }

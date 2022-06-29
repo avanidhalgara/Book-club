@@ -18,7 +18,7 @@ public class Cart {
     @Column(name = "cart_id")
     private long id;
 
-    private String productIds;
+    private String bookIds;
 
     private double amount;
 

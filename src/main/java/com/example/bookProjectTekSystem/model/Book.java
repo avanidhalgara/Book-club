@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "product")
+@Table(name = "book")
 @Data
-public class Product {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,10 +26,11 @@ public class Product {
 
     private String imageName;
 
-    public Product() {
+
+    public Book() {
     }
 
-    public Product(String name, Category category, Double price, String description, String imageName) {
+    public Book(String name, Category category, Double price, String description, String imageName) {
 
         this.name = name;
         this.category = category;

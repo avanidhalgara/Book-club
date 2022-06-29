@@ -3,7 +3,7 @@ package com.example.bookProjectTekSystem.dto;
 import lombok.Data;
 
 @Data
-public class ProductDTO {
+public class BookDTO {
 
     private Long id;
 

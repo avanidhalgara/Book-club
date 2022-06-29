@@ -1,14 +1,14 @@
-package com.example.bookProjectTekSystem.global;
+package com.example.bookProjectTekSystem.context;
 
 import com.example.bookProjectTekSystem.model.Cart;
-import com.example.bookProjectTekSystem.model.Product;
+import com.example.bookProjectTekSystem.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GlobalData {
+public class GlobalContext {
 
-    public static List<Product> cart;
+    public static List<Book> cart;
     public static long cartId;
 
     public static int userId;
@@ -17,6 +17,6 @@ public class GlobalData {
 
 
     static {
-        cart = new ArrayList<Product>();
+        cart = new ArrayList<Book>();
     }
 }

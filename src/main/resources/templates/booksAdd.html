@@ -46,7 +46,7 @@
     <!--    <h3>Add New Book</h3>-->
     <br>
 
-    <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+    <form th:action="@{/books/add}" method="post" th:object="${bookDTO}" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-5">
 
@@ -85,15 +85,15 @@
             <div class="col-sm-5">
                 <p>Book Image</p>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="productImage" accept="image/jpeg, image/png"
-                           id="productImage"/>
-                    <label class="custom-file-label" for="productImage">Choose File</label>
+                    <input type="file" class="custom-file-input" name="bookImage" accept="image/jpeg, image/png"
+                           id="bookImage"/>
+                    <label class="custom-file-label" for="bookImage">Choose File</label>
                 </div>
                 <div class="form-group">
                     <img src="#" id="imgPreview" height="100px" width="100px"
-                         th:src="@{${'/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
+                         th:src="@{${'/bookImages/' + bookDTO.imageName}}" style="margin-top: 20px" alt=" ">
                 </div>
-                <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
+                <input type="hidden" name="imgName" th:value="${bookDTO.imageName}">
                 <button type="submit" class="btn" style="background-color: #fd8a09">Submit</button>
             </div>
         </div>
@@ -121,18 +121,13 @@
             reader.readAsDataURL(input.files[0])
         }
     }
-    $('#productImage').change(function(){
+    $('#bookImage').change(function(){
         readURL(this);
     });
     $(".custom-file-input").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-
-
-
-
-
 
 </script>
 </body>

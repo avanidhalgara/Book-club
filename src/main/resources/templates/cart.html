@@ -37,7 +37,7 @@
                     <a class="nav-link" th:href="@{/}" href="#">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">Buy</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
@@ -61,9 +61,17 @@
 
         <!--Section: Block Content-->
         <section class="mt-5 mb-4">
+            <div class="row">
 
+                <div th:if="${session.message}" th:classappen="${session.message.type}" class="alert alert-primary"
+                     role="alert">
+                    <p th:text="${session.message.content}" style="color: #D71303"></p>
+                    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                </div>
+            </div>
             <!--Grid row-->
             <div class="row">
+
 
                 <!--Grid column-->
                 <div class="col-lg-8">
@@ -78,7 +86,7 @@
                                 <div class="col-md-5 col-lg-3 col-xl-3">
                                     <div class="mb-3 mb-md-0">
                                         <img class="img-fluid w-100"
-                                             th:src="@{${'/productImages/' + item.imageName}}"
+                                             th:src="@{${'/bookImages/' + item.imageName}}"
                                              src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
                                              alt="Sample">
 
@@ -195,6 +203,13 @@
             document.getElementById('checkoutButton').disabled = false;
         }
     }
+
+
+
+
+
+
+
 
 
 

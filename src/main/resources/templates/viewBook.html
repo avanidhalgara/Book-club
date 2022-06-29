@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,11 +12,14 @@
     />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Product</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>View Book</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fd8a09">
+
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #fd8a09">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img th:src="@{/images/logo.jpg}" src="../static/images/logo.jpg" width="auto" height="40"
@@ -30,47 +34,44 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/admin}" href="#">Admin-Home</a>
+                    <a class="nav-link" th:href="@{/}" href="#">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/logout}" href="#">Logout</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">Buy</a>
                 </li>
-
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/cart}" href="#">Cart</a>
+                </li>
+                <li class="nav-item active">
+                    <span class="nav-link" th:text="${cartCount}"></span>
+                </li>
             </ul>
 
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-5 d-flex justify-content-center">
+            <img class="mt-5" height="300px" width="300px" src="" th:src="@{${'/bookImages/' + book.imageName}}"
+                 alt="">
+        </div>
+        <div class="col-sm-7 mt-5">
+            <h2 th:text="${book.name}"></h2>
+            <p th:text="${book.category.name}"></p>
+            <h2>$<span th:text="${#numbers.formatDecimal(book.price,0,2)}"></span></h2>
 
-    <a th:href="@{/admin/products/add}" style="margin: 20px 0; background-color: #fd8a09" class="btn ">Add Book</a>
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">SN</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Preview</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Update</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <tr th:each="product, iStat : ${products}">
-            <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.category.name}"></td>
-            <td><img src="" height="100px" width="100px" th:src="@{${'/productImages/' + product.imageName}}"></td>
-
-            <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn "
-                   style="background-color: #fd8a09">Delete</a></td>
-            <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn "
-                   style="background-color: black; color:white">Update</a></td>
-
-        </tr>
-        </tbody>
-    </table>
+            <p th:text="${book.description}"></p>
+            <a href="" th:href="@{/addToCart/{id}(id = ${book.id})}" class="btn " style="background-color: #fd8a09">Add
+                To Cart</a>
+        </div>
+    </div>
 </div>
 
 

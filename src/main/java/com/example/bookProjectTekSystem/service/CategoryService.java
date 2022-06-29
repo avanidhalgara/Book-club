@@ -5,9 +5,9 @@ package com.example.bookProjectTekSystem.service;
 
 
 import com.example.bookProjectTekSystem.model.Category;
-import com.example.bookProjectTekSystem.model.Product;
+import com.example.bookProjectTekSystem.model.Book;
 import com.example.bookProjectTekSystem.repository.CategoryRepository;
-import com.example.bookProjectTekSystem.repository.ProductRepository;
+import com.example.bookProjectTekSystem.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -22,35 +22,35 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    BookRepository bookRepository;
 
-// get all category  by using meethod findAll() from category Repo.
+    // get all category  by using meethod findAll() from category Repo.
     public List<Category> getAllCategory() {
         return categoryRepository.findAll();
     }
 
-// adding category and save it by calling method save from category repo.
-    public void addCategory(Category category){
+    // adding category and save it by calling method save from category repo.
+    public void addCategory(Category category) {
         categoryRepository.save(category);
     }
 
 
-//    delete category by id and called method delete by id to delete category
-    public void removeCategoryById(int id){
-        List<Product> products = productRepository.findAllByCategory_Id(id);
-        if(!CollectionUtils.isEmpty(products)){
-            List<Long> productIds = new ArrayList<>();
-            for(Product product : products ){
-                productIds.add(product.getId());
+    //    delete category by id and called method delete by id to delete category
+    public void removeCategoryById(int id) {
+        List<Book> books = bookRepository.findAllByCategory_Id(id);
+        if (!CollectionUtils.isEmpty(books)) {
+            List<Long> bookIds = new ArrayList<>();
+            for (Book book : books) {
+                bookIds.add(book.getId());
             }
-            productRepository.deleteAllById(productIds);
+            bookRepository.deleteAllById(bookIds);
         }
         categoryRepository.deleteById(id);
 
     }
 
-//
-    public Optional<Category> getCategoryById(int id){
+    //
+    public Optional<Category> getCategoryById(int id) {
         return categoryRepository.findById(id);
     }
 }

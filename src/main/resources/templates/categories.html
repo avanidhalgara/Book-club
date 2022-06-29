@@ -44,13 +44,13 @@
 </nav>
 <div class="container">
 
-    <a th:href="@{/admin/categories/add}" style="margin: 20px 0  bc; background-color: #fd8a09" class="btn ">Add
+    <a th:href="@{/categories/add}" style="margin: 20px 0  bc; background-color: #fd8a09" class="btn ">Add
         Category</a>
-    <a th:href="@{/admin/products}" style="margin: 20px 0;background-color: #fd8a09" class="btn ">View Books</a>
+    <a th:href="@{/books}" style="margin: 20px 0;background-color: #fd8a09" class="btn ">View Books</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
-            <th scope="col">SN</th>
+            <th scope="col">ID</th>
             <th scope="col">Category Name</th>
             <th scope="col">Delete</th>
             <th scope="col">Update</th>
@@ -64,9 +64,9 @@
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${category.name}"></td>
 
-            <td><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}" class="btn "
+            <td><a href="" th:href="@{/categories/delete/{id}(id=${category.id})}" class="btn "
                    style="background-color: #fd8a09">Delete</a></td>
-            <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn "
+            <td><a href="" th:href="@{/categories/update/{id}(id=${category.id})}" class="btn "
                    style="background-color: black; color:white">Update</a></td>
 
         </tr>
