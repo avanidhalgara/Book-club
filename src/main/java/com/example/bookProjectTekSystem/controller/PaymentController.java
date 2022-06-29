@@ -36,8 +36,8 @@ public class PaymentController {
         model.addAttribute("cartCount", GlobalContext.cart.size());
         model.addAttribute("total", GlobalContext.cart.stream().mapToDouble(Book::getPrice).sum());
         List<Book> ids = new ArrayList<>();
-        for (Book product : GlobalContext.cart) {
-            ids.add(product);
+        for (Book book : GlobalContext.cart) {
+            ids.add(book);
         }
         model.addAttribute("cart", ids);
         GlobalContext.cart.clear();

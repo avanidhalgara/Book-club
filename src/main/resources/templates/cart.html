@@ -63,10 +63,11 @@
         <section class="mt-5 mb-4">
             <div class="row">
 
-                <div th:if="${session.message}" th:classappen="${session.message.type}" class="alert alert-primary"
+                <div th:if="${session.cartMessage}" th:classappen="${session.cartMessage.type}"
+                     class="alert alert-primary"
                      role="alert">
-                    <p th:text="${session.message.content}" style="color: #D71303"></p>
-                    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                    <p th:text="${session.cartMessage.content}" style="color: #D71303"></p>
+                    <th:block th:text="${#session.removeAttribute('cartMessage')}"></th:block>
                 </div>
             </div>
             <!--Grid row-->
@@ -203,6 +204,7 @@
             document.getElementById('checkoutButton').disabled = false;
         }
     }
+
 
 
 

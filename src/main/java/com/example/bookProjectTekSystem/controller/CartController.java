@@ -61,7 +61,7 @@ public class CartController {
             return "redirect:/cart";
         } catch (Exception e) {
             logger.error("Add to cart failed.", e.getMessage());
-            session.setAttribute("message", new Message("Add to cart failed.", "alert-danger"));
+            session.setAttribute("cartMessage", new Message("Add to cart failed.", "alert-danger"));
             return "redirect:/cart";
         }
     }
@@ -79,7 +79,7 @@ public class CartController {
             return "cart";
         } catch (Exception e) {
             logger.error("Get cart failed.", e.getMessage());
-            session.setAttribute("message", new Message("Get to cart failed.", "alert-danger"));
+            session.setAttribute("cartMessage", new Message("Get to cart failed.", "alert-danger"));
             return "cart";
         }
     }
